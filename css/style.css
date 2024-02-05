@@ -12,6 +12,7 @@
 
 #todoCards{
     display: flex;
+    flex-wrap: wrap;
     
 }
 
