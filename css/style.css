@@ -22,6 +22,7 @@
 }
 
 .delBtn{
+    background-color: red;
    position: relative;
    top: -15px;
    left: -35px;

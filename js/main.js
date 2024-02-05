@@ -1,46 +1,40 @@
 
 
 const btn = document.querySelector("#btn");
+const todoCard = document.querySelector(".todoCard");
+const todoCards = document.querySelector("#todoCards")
+const compteurDiv = document.querySelector(".compteur");
 
+const classTodoCards = todoCards.classList.contains("todoCards")
+
+let compteur = 1;
+compteurDiv.innerHTML = compteur;
+
+// Ajoute une nouvelle card
 btn.addEventListener("click", function(){
+    const cloneCard = todoCard.cloneNode(true);
+    todoCards.appendChild(cloneCard)
+    compteur++;
+    compteurDiv.innerHTML = compteur;
 
-       const todoCard = document.querySelector(".todoCard");
+})
 
-       const cloneCarte = todoCard.cloneNode(true);
+ //Supprime une card
 
-       const todoCards = document.querySelector("#todoCards");
 
-       todoCards.appendChild(cloneCarte);
-});
+ 
+todoCards.addEventListener("click", function(event){
+    const targetElement = event.target;
+   console.log(targetElement.closest(".delBtn"))
+    if(targetElement.classList.contains("fa")){
+    const btnSupprimer = targetElement.closest(".delBtn")
 
-const todoCard = document.querySelectorAll(".todoCard");
-
-todoCard.forEach((card) => {
-       const delBtn = document.querySelectorAll(".delBtn")
-       delBtn.forEach((btn) => {
-         btn.addEventListener("click", function(){
-            card.remove()
-        })
-       })
- } )
-
-   
-// delBtn.forEach(btn => {
-//     btn.addEventListener("click", function(){
-
-//         console.log("ok")
-    
-//         const todoCard = document.querySelector(".todoCard");
-
-//     //   const cloneCarte = todoCard.cloneNode(true);
-
-//         delBtn.addEventListener("click", function(){
-//         todoCard.remove()
-//     })
-//     const todoCards = document.querySelector("#todoCards");
-//     todoCards.appendChild(todoCard)
-    
-// })
-            
-//         });
+           const parentButtonSuppr = btnSupprimer.parentElement
+           parentButtonSuppr.remove()
+           
+           compteur--;
+           compteurDiv.innerHTML = compteur;
+       }
+       console.log("ok")
+})
 
